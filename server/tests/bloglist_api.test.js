@@ -185,9 +185,10 @@ describe('deletion of a blog', () => {
       .send(newBlog)
       .set(headers)
   })
-  test('succeeds with status code 204 if id is valid', async () => {
+  test.only('succeeds with status code 204 if id is valid', async () => {
     const aBlog = result.body
 
+    const initialBlogs = await helper.blogsInDb()
     await api
       .delete(`/blogs/${aBlog.id}`)
       .set(headers)
@@ -196,7 +197,7 @@ describe('deletion of a blog', () => {
     const blogsAtEnd = await helper.blogsInDb()
 
     expect(blogsAtEnd).toHaveLength(
-      helper.initialBlogs.length - 1
+      initialBlogs.length - 1
     )
 
     const titles = blogsAtEnd.map(b => b.title)
