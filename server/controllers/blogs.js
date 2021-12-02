@@ -67,7 +67,7 @@ blogsRouter.delete('/:id', middleware.userExtractor, async (request, response) =
   const blog = await Blog.findById(request.params.id)
 
   if (blog.user.toString() === user.id) {
-    blog.delete()
+    await blog.delete()
     response.status(204).end()
   } else {
     return response.status(401).json({ error: 'failed deletion: user cannot delete blogs he did not create' })
