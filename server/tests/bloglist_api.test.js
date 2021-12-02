@@ -196,9 +196,11 @@ describe('deletion of a blog', () => {
 
     const blogsAtEnd = await helper.blogsInDb()
     // eslint-disable-next-line no-console
-    console.log('blogs at end: ', blogsAtEnd)
+    console.log('blogs at start: ', initialBlogs.length)
     // eslint-disable-next-line no-console
-    console.log('Response: ', response)
+    console.log('blogs at end: ', blogsAtEnd.length)
+    // eslint-disable-next-line no-console
+    console.log('Response: ', response.status)
 
     expect(blogsAtEnd).toHaveLength(
       initialBlogs.length - 1
