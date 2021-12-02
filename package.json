@@ -1,0 +1,147 @@
+{
+  "name": "create-app",
+  "version": "1.0.0",
+  "description": "A boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "start:test": "cross-env NODE_ENV=test nodemon index.js",
+    "start": "cross-env NODE_ENV=production node index.js",
+    "build": "webpack --mode=production",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "test:backend": "cross-env NODE_ENV=test jest /server --verbose --runInBand",
+    "test:frontend": "react-scripts test /client",
+    "test": "cross-env NODE_ENV=test jest --runInBand",
+    "cypress:open": "cypress open",
+    "test:e2e": "cypress run"
+  },
+  "engines": {
+    "node": ">=10.15"
+  },
+  "author": "Jami Kousa",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/register": "^7.8.3",
+    "axios": "^0.19.2",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "bcrypt": "^5.0.1",
+    "chokidar": "^3.3.1",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.0",
+    "css-loader": "^3.4.2",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "fibers": "^4.0.2",
+    "file-loader": "^5.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mini-css-extract-plugin": "^0.9.0",
+    "module-alias": "^2.2.2",
+    "mongoose": "^6.0.5",
+    "mongoose-unique-validator": "^2.0.3",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "sass": "^1.25.0",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@testing-library/jest-dom": "^5.15.1",
+    "@testing-library/react": "^12.1.2",
+    "babel-jest": "^27.4.2",
+    "cross-env": "^7.0.3",
+    "cypress": "^8.6.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-jest": "^24.5.2",
+    "jest": "^27.1.1",
+    "nodemon": "^2.0.2",
+    "supertest": "^6.1.6",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-server": "^3.10.1",
+    "webpack-hot-middleware": "^2.25.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "dist/*",
+      "client/*",
+      "server/*"
+    ]
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@controllers": "server/controllers",
+    "@middleware": "server/middleware",
+    "@util": "server/util"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/*.test.js",
+      "!**/coverage/**",
+      "!**/serviceWorker.js",
+      "!**/index.js"
+    ],
+    "projects": [
+      {
+        "displayName": "backend",
+        "testEnvironment": "node",
+        "testMatch": [
+          "<rootDir>/server/**/*.test.js"
+        ]
+      },
+      {
+        "displayName": "frontend",
+        "testEnvironment": "jsdom",
+        "testMatch": [
+          "<rootDir>/client/**/*.test.js"
+        ],
+        "moduleFileExtensions": [
+          "js",
+          "json"
+        ],
+        "moduleNameMapper": {
+          "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+          "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+        }
+      }
+    ]
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "presets": [
+          "@babel/preset-env",
+          "@babel/preset-react"
+        ]
+      }
+    }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
