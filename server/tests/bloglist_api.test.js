@@ -189,12 +189,16 @@ describe('deletion of a blog', () => {
     const aBlog = result.body
 
     const initialBlogs = await helper.blogsInDb()
-    await api
+    const response = await api
       .delete(`/blogs/${aBlog.id}`)
       .set(headers)
       .expect(204)
 
     const blogsAtEnd = await helper.blogsInDb()
+    // eslint-disable-next-line no-console
+    console.log('blogs at end: ', blogsAtEnd)
+    // eslint-disable-next-line no-console
+    console.log('Response: ', response)
 
     expect(blogsAtEnd).toHaveLength(
       initialBlogs.length - 1
