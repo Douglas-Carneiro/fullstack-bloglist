@@ -196,7 +196,7 @@ describe('deletion of a blog', () => {
     const blogsAtEnd = await helper.blogsInDb()
 
     expect(blogsAtEnd).toHaveLength(
-      helper.initialBlogs.length
+      helper.initialBlogs.length - 1
     )
 
     const titles = blogsAtEnd.map(b => b.title)
