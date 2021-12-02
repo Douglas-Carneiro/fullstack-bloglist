@@ -185,7 +185,7 @@ describe('deletion of a blog', () => {
       .send(newBlog)
       .set(headers)
   })
-  test.only('succeeds with status code 204 if id is valid', async () => {
+  test('succeeds with status code 204 if id is valid', async () => {
     const aBlog = result.body
 
     const initialBlogs = await helper.blogsInDb()
